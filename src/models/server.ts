@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express';
 import routesProduct from "../routes/product";
 import db from '../db/connection'
+import cors from 'cors';
 
 class Server {
     private app: Application;
@@ -34,6 +35,9 @@ class Server {
 
         // Parsear el body
         this.app.use(express.json());
+
+        // Cors
+        this.app.use(cors());
     }
 
     async dbConnect() {

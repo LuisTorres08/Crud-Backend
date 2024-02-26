@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const product_1 = __importDefault(require("../routes/product"));
 const connection_1 = __importDefault(require("../db/connection"));
+const cors_1 = __importDefault(require("cors"));
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -40,6 +41,8 @@ class Server {
     midlewares() {
         // Parsear el body
         this.app.use(express_1.default.json());
+        // Cors
+        this.app.use((0, cors_1.default)());
     }
     dbConnect() {
         return __awaiter(this, void 0, void 0, function* () {
